@@ -198,7 +198,7 @@ cursor: default;
   
 <!-- below header -->
   <div id="content">
-    <h2>NFT Burglars art now available<br> <span style="font-size:16px;">Don't even think about screenshotting.<br><a href="mailto:nftburglars@gmail.com" target="_blank">Contact us</a>&nbsp;•&nbsp;<a href="https://rarible.com/user/0x3d21f6ba4624d86901835dec84e7a9d38206232f" target="_blank">Buy an NFT</a>&nbsp;•&nbsp;<a id="recentlyViewed">Recently viewed</a></span></h2>
+    <h2>NFT Burglars art now available<br> <span style="font-size:16px;">Don't even think about screenshotting.<br><a href="mailto:nftburglars@gmail.com" target="_blank">Contact us</a>&nbsp;•&nbsp;<a href="https://rarible.com/user/0x3d21f6ba4624d86901835dec84e7a9d38206232f" target="_blank">Buy an NFT</a>&nbsp;•&nbsp;<a href="recent">Recently viewed</a></span></h2>
     <br>
   </div>
   
@@ -223,22 +223,22 @@ var infoDay = document.getElementById("infoDay");
 
 setTimeout(function() {document.getElementById("loader").remove();document.getElementById("title").remove();document.getElementById("page").style.visibility = "visible";}, 5800);
 
+if (window.location.search.split("?") == "page=home") {
+setTimeout(function() {document.getElementById("loader").remove();document.getElementById("title").remove();document.getElementById("page").style.visibility = "visible";}, 10);
+}
+
 function loadImg(source,title,nftdate) {
 var x = document.createElement("img");
 x.src = source;
 x.title = title;
 x.name = nftdate;
 
+function trackItem() {
 const d = new Date();
 var nftStore = localStorage.getItem("nft_view_history");
 var nftData = "<p>" + x.title + " - - - " + d.toLocaleTimeString() + "</p><br>";
-
-function trackItem() {
 localStorage.setItem("nft_view_history",nftStore + nftData); 
 } 
-document.getElementById("recentlyViewed").onclick = function() {
-document.getElementById("content").innerHTML = "<h2>Recently viewed</h2><br><p>" + nftStore.split("null")[1] + "</p>";
-};
 
 x.onclick = function() {infoDiv.style.visibility = "visible"; infoTitle.innerHTML = title; infoImg.src = source; infoDay.innerHTML = nftdate; trackItem()};
 document.getElementById("content").appendChild(x);
