@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NFT Burglars - Recently viewed</title>
+<base href="https://nft-burlars.github.io/"></base>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+<link rel='icon' href='https://nft-burlars.github.io/favicon.png' type='image/png'/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<style>
+html {
+scroll-behavior: smooth;
+}
+body {
+background: white;
+overflow-x: hidden;
+}
+* {
+font-family: 'Roboto Mono', monospace;
+user-select: none;
+-webkit-user-select: none;
+}
+input {
+-webkit-user-select: auto;
+}
+:focus {
+outline: none;
+}
+#title {
+position: fixed;
+top: 50%;
+left: 0px;
+width: 100%;
+text-align: center;
+height: 50px;
+margin-top: -25px;
+color: white;
+font-size: 35px;
+font-weight: bold;
+z-index: 3;
+}
+#page {
+visibility: hidden;
+}
+#top {
+position: fixed;
+top: 0px;
+width: 100%;
+left: 0px;
+height: 80px;
+background: #f77c82;
+z-index: 1;
+}
+
+#reload {
+color: white;
+font-size: 30px;
+font-weight: bold;
+margin-left: 20px;
+height: 40px;
+margin-top: 20px;
+width: 250px;
+background: transparent;
+border: none;
+}
+#buy {
+position: absolute;
+top: 20px;
+right: 50px;
+height: 40px;
+border: 2px solid white;
+background: transparent;
+color: white;
+font-size: 25px;
+transition: background 0.3s;
+width: 150px;
+}
+#buy:hover {
+background: white;
+color: black;
+}
+#content {
+position: absolute;
+width: 90%;
+top: 80px;
+left: 5%;
+text-align: center;
+}
+#content h2 {
+color: black;
+font-size: 30px;
+font-weight: bold;
+width: 100%;
+text-align: center;
+}
+a {
+text-decoration: none;
+color: black;
+cursor: pointer;
+}
+#content a:hover {
+background: #eddfdf;
+}
+#content img {
+height: 300px;
+width: 300px;
+border: none;
+margin: 10px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+transition: transform 0.3s;
+}
+#content img:hover {
+transform: scale(1.05);
+cursor: pointer;
+}
+button {
+cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+
+    
+<!-- top section -->
+  <div id="top">
+  <a href="https://nft-burlars.github.io?page=home">
+    <button id="reload">NFT Burglars</button>
+  </a>
+  <a href="https://rarible.com/user/0x3d21f6ba4624d86901835dec84e7a9d38206232f" target="_blank">
+    <button id="buy">Buy</button>
+  </a>
+  </div>
+  
+<!-- below header -->
+  <div id="content">
+    <h2>Recently viewed<br> <span style="font-size:16px;" id="historySpan">You have no recently viewed NFTs</span></h2>
+  </div>
+ 
+
+<script>
+document.getElementById("historySpan").innerHTML = "<br><p>" + localStorage.getItem("nft_view_history").split("null")[1] + "</p>";
+</script>
+</body>
+</html>
