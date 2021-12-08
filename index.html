@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NFT Burglars</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+<link rel='icon' href='https://lb123658.github.io/nft/favicon.png' type='image/png'/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<style>
+html {
+scroll-behavior: smooth;
+}
+body {
+background: white;
+overflow-x: hidden;
+}
+* {
+font-family: 'Roboto Mono', monospace;
+user-select: none;
+-webkit-user-select: none;
+}
+input {
+-webkit-user-select: auto;
+}
+:focus {
+outline: none;
+}
+#loader {
+position: absolute;
+top: 50%;
+left: 50%;
+width: 300px;
+height: 300px;
+border-radius: 50%;
+background: #f77c82;
+margin: -150px 0px 0px -150px;
+animation-name: fade;
+animation-duration: 6s;
+animation-iteration-count: 1;
+z-index: 2;
+}
+@keyframes fade {
+0% {transform: scale(1);}
+50% {transform: scale(7) translate(0px,0px);}
+51% {transform: scale(7) translate(0px,0px);}
+100% {transform: scale(7) translate(0px,500px);}
+}
+#title {
+position: fixed;
+top: 50%;
+left: 0px;
+width: 100%;
+text-align: center;
+height: 50px;
+margin-top: -25px;
+color: white;
+font-size: 35px;
+font-weight: bold;
+z-index: 3;
+}
+#page {
+visibility: hidden;
+}
+#top {
+position: fixed;
+top: 0px;
+width: 100%;
+left: 0px;
+height: 80px;
+background: #f77c82;
+z-index: 1;
+}
+noscript {
+position: absolute;
+bottom: 10px;
+width: 100%;
+left: 0px;
+text-align: center;
+color: black;
+}
+#reload {
+color: white;
+font-size: 30px;
+font-weight: bold;
+margin-left: 20px;
+height: 40px;
+margin-top: 20px;
+width: 250px;
+background: transparent;
+border: none;
+}
+#buy {
+position: absolute;
+top: 20px;
+right: 50px;
+height: 40px;
+border: 2px solid white;
+background: transparent;
+color: white;
+font-size: 25px;
+transition: background 0.3s;
+width: 150px;
+}
+#buy:hover {
+background: white;
+color: black;
+}
+#content {
+position: absolute;
+width: 90%;
+top: 80px;
+left: 5%;
+text-align: center;
+}
+#content h2 {
+color: black;
+font-size: 30px;
+font-weight: bold;
+width: 100%;
+text-align: center;
+}
+a {
+text-decoration: none;
+color: black;
+cursor: pointer;
+}
+#content a:hover {
+background: #eddfdf;
+}
+#content img {
+height: 300px;
+width: 300px;
+border: none;
+margin: 10px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+transition: transform 0.3s;
+}
+#content img:hover {
+transform: scale(1.05);
+cursor: pointer;
+}
+button {
+cursor: pointer;
+}
+#infoDiv {
+position: fixed;
+top: 80px;
+width: 90%;
+left: 5%;
+height: 100%;
+z-index: 1;
+background: white;
+text-align: center;
+visibility: hidden;
+}
+#infoTitle {
+font-size: 30px;
+font-weight: bold;
+width: 100%;
+}
+#infoImg {
+max-height: 400px;
+width: 400px;
+border: none;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#infoDiv button {
+height: 30px;
+font-size: 20px;
+border: 2px solid #f77c82;
+color: #f77c82;
+background: white;
+cursor: default;
+}
+</style>
+</head>
+<body>
+<!-- loading screen -->
+<noscript><span class="material-icons" style="font-size:80px;">code</span><br>JavaScript is not turned on.</noscript>
+<p id="title">NFT Burglars</p>
+<div id="loader"></div>
+
+<!-- main page -->
+<div id="page">
+
+    
+<!-- top section -->
+  <div id="top">
+  <a href="#">
+    <button id="reload">NFT Burglars</button>
+  </a>
+  <a href="https://rarible.com" target="_blank">
+    <button id="buy">Buy</button>
+  </a>
+  </div>
+  
+<!-- below header -->
+  <div id="content">
+    <h2>NFT Burglars art now available<br> <span style="font-size:16px;">Don't even think about screenshotting.<br><a href="mailto:nftburglars@gmail.com" target="_blank">Contact us</a>&nbsp;•&nbsp;<a href="https://rarible.com" target="_blank">Buy an NFT</a>&nbsp;•&nbsp;<a href="#" id="recentlyViewed">Recently viewed</a></span></h2>
+    <br>
+  </div>
+  
+<!-- image info popup -->
+  <div id="infoDiv">
+    <h2 id="infoTitle">No NFT selected</h2>
+    <img id="infoImg" src=""></img>
+    <br>
+    <br>
+    <button id="infoDay">Unknown date</button>
+    <br>
+    <br>
+    <button onclick="infoDiv.style.visibility='hidden';" style="cursor:pointer;">Close</button>
+  </div>
+  
+</div>
+<script>
+var infoDiv = document.getElementById("infoDiv");
+var infoTitle = document.getElementById("infoTitle");
+var infoImg = document.getElementById("infoImg");
+var infoDay = document.getElementById("infoDay");
+
+setTimeout(function() {document.getElementById("loader").remove();document.getElementById("title").remove();document.getElementById("page").style.visibility = "visible";}, 5800);
+
+function loadImg(source,title,nftdate) {
+var x = document.createElement("img");
+x.src = source;
+x.title = title;
+x.name = nftdate;
+
+const d = new Date();
+var nftStore = localStorage.getItem("nft_view_history");
+var nftData = "<p>" + x.title + " - - - " + d.toLocaleTimeString() + "</p><br>";
+
+function trackItem() {
+localStorage.setItem("nft_view_history",nftStore + nftData); 
+} 
+document.getElementById("recentlyViewed").onclick = function() {
+document.getElementById("content").innerHTML = "<h2>Recently viewed</h2><br><p>" + nftStore.split("null")[1] + "</p>";
+};
+
+x.onclick = function() {infoDiv.style.visibility = "visible"; infoTitle.innerHTML = title; infoImg.src = source; infoDay.innerHTML = nftdate; trackItem()};
+document.getElementById("content").appendChild(x);
+}
+
+// load nfts
+loadImg("https://lb123658.github.io/nft/images/red-and-white.gif","Red and White","For sale on Rarible.com");
+
+</script>
+</body>
+</html>
