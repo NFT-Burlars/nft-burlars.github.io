@@ -223,7 +223,7 @@ var infoDay = document.getElementById("infoDay");
 
 setTimeout(function() {document.getElementById("loader").remove();document.getElementById("title").remove();document.getElementById("page").style.visibility = "visible";}, 5800);
 
-if (window.location.search.split("?") == "page=home") {
+if (window.location.search.split("?")[1] == "page=home") {
 setTimeout(function() {document.getElementById("loader").remove();document.getElementById("title").remove();document.getElementById("page").style.visibility = "visible";}, 10);
 }
 
